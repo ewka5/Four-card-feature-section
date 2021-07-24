@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+    
+// Colors
+$red: hsl(0, 78%, 62%)
+$cyan: hsl(180, 62%, 55%)
+$orange: hsl(34, 97%, 64%)
+$blue: hsl(212, 86%, 64%)
+$dark-blue: hsl(234, 12%, 34%)
+$grayish-blue: hsl(229, 6%, 66%)
+$gray: hsl(0, 0%, 98%)
+
+// Typography
+$font-size: 15px
+$font-family: 'Poppins', sans-serif
+
+*
+    margin: 0
+    box-sizing: border-box
+    font-family: $font-family
+    font-size: $font-size
+
+.header
+    max-width: 80%
+    margin: 30px auto
+    text-align: center
+
+@mixin header($font-weight)
+    font-weight: $font-weight
+    font-size: 1.625rem
+
+.header__header-1
+    @include header(200)
+
+.header__header-2
+    @include header(600)
+    margin-bottom: 8px
+
+.header__paragraph
+    font-weight: 400
+    color: $grayish-blue
+
+.cards
+    display: grid
+    grid-template-areas: "c-1" "c-2" "c-3" "c-4"
+    row-gap: 35px
+    max-width: 91%
+    margin: 0 auto
+    margin-bottom: 50px
+
+@mixin card($color, $number)
+    border-radius: 10px
+    padding: 20px 40px
+    box-shadow: 0px 3px 10px $grayish-blue
+    border-top: 5px solid $color
+    grid-area: c-#{$number}
+
+.card_cyan
+    @include card($cyan, 1)
+
+.card_red
+    @include card($red, 2)
+
+.card_orange
+    @include card($orange, 3)
+
+.card_blue
+    @include card($blue, 4)
+
+.card_middle-row
+    display: flex
+    flex-direction: column
+    row-gap: 35px
+
+.card__header
+    font-size: 1.5rem
+    margin-bottom: 8px
+
+.card__paragraph
+    color: $grayish-blue
+    margin-bottom: 32px
+
+.card__image
+    float: right
+
+@media (min-width: 500px)
+    .cards
+        max-width: 80%
+    
+@media (min-width: 900px)
+    .cards
+        grid-template-areas: ". c-2 ." "c-1 c-2 c-4" "c-1 c-3 c-4" ". c-3 ."
+        column-gap: 30px
+        grid-template-columns: 1fr 1fr 1fr
